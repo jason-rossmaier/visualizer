@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. Official Resource For Writing Proper Visualizer Code &mdash; PyVis dev documentation</title>
+    <title>Official Resource For Writing Proper Visualizer Code &mdash; PyVis dev documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="PyVis dev documentation" href="../index.html" />
-    <link rel="next" title="4. Pyglet, A Perhaps Useful Guide" href="../pyglet/index.html" />
-    <link rel="prev" title="2. Guidelines for Code-Review" href="review-guidelines.html" /> 
+    <link rel="next" title="Pyglet, A Perhaps Useful Guide" href="../pyglet/index.html" />
+    <link rel="prev" title="Guidelines for Code-Review" href="review-guidelines.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,10 +40,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../pyglet/index.html" title="4. Pyglet, A Perhaps Useful Guide"
+          <a href="../pyglet/index.html" title="Pyglet, A Perhaps Useful Guide"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="review-guidelines.html" title="2. Guidelines for Code-Review"
+          <a href="review-guidelines.html" title="Guidelines for Code-Review"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">PyVis dev documentation</a> &raquo;</li> 
       </ul>
@@ -55,9 +55,9 @@
           <div class="body">
             
   <div class="section" id="official-resource-for-writing-proper-visualizer-code">
-<h1>3. Official Resource For Writing Proper Visualizer Code<a class="headerlink" href="#official-resource-for-writing-proper-visualizer-code" title="Permalink to this headline">¶</a></h1>
+<h1>Official Resource For Writing Proper Visualizer Code<a class="headerlink" href="#official-resource-for-writing-proper-visualizer-code" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="importing-modules">
-<h2>3.1. Importing Modules<a class="headerlink" href="#importing-modules" title="Permalink to this headline">¶</a></h2>
+<h2>Importing Modules<a class="headerlink" href="#importing-modules" title="Permalink to this headline">¶</a></h2>
 <p>Module imports should all appear at the very top of the file unless there is a good reason not to (e.g. a user selects if he wants OpenGL or DirectX rendering).</p>
 <p><tt class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></tt> is never acceptable.  This can cause name conflicts, and makes it more difficult to determine the origin of objects.  For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">application</span> <span class="kn">import</span> <span class="o">*</span>
@@ -86,7 +86,7 @@
 <p>In these cases, the origin of Rectangle is clearly visible.</p>
 </div>
 <div class="section" id="docstrings">
-<h2>3.2. Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
 <p>Proper docstrings are required on all public methods (i.e. methods that do not start with a single underscore), and are suggested for usage with all private methods.  These docstrings generate the documentation used by sphinx and are easy-to-read when just reading code.  If someone ever has to look at the source to determine how to use a certain module, then the docstring is not clear enough.</p>
 <p>Docstrings should try to follow the following format:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -120,19 +120,19 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">3. Official Resource For Writing Proper Visualizer Code</a><ul>
-<li><a class="reference internal" href="#importing-modules">3.1. Importing Modules</a></li>
-<li><a class="reference internal" href="#docstrings">3.2. Docstrings</a></li>
+<li><a class="reference internal" href="#">Official Resource For Writing Proper Visualizer Code</a><ul>
+<li><a class="reference internal" href="#importing-modules">Importing Modules</a></li>
+<li><a class="reference internal" href="#docstrings">Docstrings</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="review-guidelines.html"
-                        title="previous chapter">2. Guidelines for Code-Review</a></p>
+                        title="previous chapter">Guidelines for Code-Review</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../pyglet/index.html"
-                        title="next chapter">4. Pyglet, A Perhaps Useful Guide</a></p>
+                        title="next chapter">Pyglet, A Perhaps Useful Guide</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/process/common-guidelines.txt"
@@ -165,10 +165,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../pyglet/index.html" title="4. Pyglet, A Perhaps Useful Guide"
+          <a href="../pyglet/index.html" title="Pyglet, A Perhaps Useful Guide"
              >next</a> |</li>
         <li class="right" >
-          <a href="review-guidelines.html" title="2. Guidelines for Code-Review"
+          <a href="review-guidelines.html" title="Guidelines for Code-Review"
              >previous</a> |</li>
         <li><a href="../index.html">PyVis dev documentation</a> &raquo;</li> 
       </ul>

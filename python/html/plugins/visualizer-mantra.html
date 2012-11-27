@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Vizualizer Mantra &mdash; PyVis dev documentation</title>
+    <title>Vizualizer Mantra &mdash; PyVis dev documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -55,10 +55,10 @@
           <div class="body">
             
   <div class="section" id="vizualizer-mantra">
-<h1>1. Vizualizer Mantra<a class="headerlink" href="#vizualizer-mantra" title="Permalink to this headline">¶</a></h1>
+<h1>Vizualizer Mantra<a class="headerlink" href="#vizualizer-mantra" title="Permalink to this headline">¶</a></h1>
 <p>This work shall act as a set of guidelines for plugin design decisions.  It shall also give guidance in the visualizer core on what should be improved such that plugins may more easily achieve the goals set forth by this document.</p>
 <div class="section" id="purpose-of-the-visualizer">
-<h2>1.1. Purpose of the Visualizer<a class="headerlink" href="#purpose-of-the-visualizer" title="Permalink to this headline">¶</a></h2>
+<h2>Purpose of the Visualizer<a class="headerlink" href="#purpose-of-the-visualizer" title="Permalink to this headline">¶</a></h2>
 <p>There are several purposes that could be said that the visualizer holds, but above all the purpose of the visualizer is to convey as much artificial intelligence information in the most accurate, succint way possible.  Only when this goal is met, should other features and fluff be worked on.</p>
 <p>Other purposes of the visualizer include (but are not limited to):</p>
 <blockquote>
@@ -70,11 +70,11 @@
 </div></blockquote>
 </div>
 <div class="section" id="should-the-visualizer-be-attractive">
-<h2>1.2. Should the visualizer be attractive?<a class="headerlink" href="#should-the-visualizer-be-attractive" title="Permalink to this headline">¶</a></h2>
+<h2>Should the visualizer be attractive?<a class="headerlink" href="#should-the-visualizer-be-attractive" title="Permalink to this headline">¶</a></h2>
 <p>I&#8217;ll go into this more a little later, but the answer is emphatically, yes!  In order to properly convey information, your visualizer has to have as few distractions as possible.  An ugly visualizer is a distracting visualizer and takes away from giving competitors the ability to easily debug issues with their AI.  Likewise, too many visuals can make the visualizer more attractive, but can also distract the competitor, so a balance between beauty and minimalism must be achieved.</p>
 </div>
 <div class="section" id="visualizing-everything">
-<h2>1.3. Visualizing Everything<a class="headerlink" href="#visualizing-everything" title="Permalink to this headline">¶</a></h2>
+<h2>Visualizing Everything<a class="headerlink" href="#visualizing-everything" title="Permalink to this headline">¶</a></h2>
 <p>Every action that a competitor can issue in their AI through the client must have a visual analogue.  Everything from movements and attacks to talking and additional debugging information, if available.  In almost every game, all of this information, if conveyed at once, would present information overload for the competitor or there simply isn&#8217;t enough screen real-estate to display it all at once.  What you want to do, then is prioritize each of these things and maybe assign a time percentage associated with it, which approximates how much time you think a competitor will look at this information for a competition.</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -142,7 +142,7 @@ deaths.</td>
 <p>The above table tells us that we should almost constantly show, in order, moves, attacks, score/total money, and health.  Talk is pretty important but could perhaps be toggle-able.  Territory control is not hugely important, but takes up minimal screen real-estate.  Per-unit money should not be a priority to show on the screen, but should be easily available  when needed.  Maybe we could make it visible when a unit is selected, or perhaps when it&#8217;s being hovered over.</p>
 </div>
 <div class="section" id="how-to-convey-information">
-<h2>1.4. How To Convey Information<a class="headerlink" href="#how-to-convey-information" title="Permalink to this headline">¶</a></h2>
+<h2>How To Convey Information<a class="headerlink" href="#how-to-convey-information" title="Permalink to this headline">¶</a></h2>
 <p>There&#8217;s a lot of ways we can show information.  You&#8217;ll have to rely on creativity for a lot of this, but some of the common ways are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -155,32 +155,32 @@ deaths.</td>
 </ul>
 </div></blockquote>
 <div class="section" id="a-texture">
-<h3>1.4.1. A texture<a class="headerlink" href="#a-texture" title="Permalink to this headline">¶</a></h3>
+<h3>A texture<a class="headerlink" href="#a-texture" title="Permalink to this headline">¶</a></h3>
 <p>For example if there&#8217;s 4 unit types, you might have 4 textures to differentiate between them easily.</p>
 </div>
 <div class="section" id="a-changing-bar">
-<h3>1.4.2. A changing bar<a class="headerlink" href="#a-changing-bar" title="Permalink to this headline">¶</a></h3>
+<h3>A changing bar<a class="headerlink" href="#a-changing-bar" title="Permalink to this headline">¶</a></h3>
 <p>The most common example of this is health.  If a unit&#8217;s health is depleting, the bar decreases in size.  But that&#8217;s not the only way.  If there&#8217;s only one unit type in the game, and such granularity is not needed for health, you could have 4 textures which depict different states of disrepair for the unit.  With that, you&#8217;ve effectively saved some real-estate on a unit that can be used for something else.  You could also depict a falling timer or perhaps a score ceiling with two racing bars.</p>
 </div>
 <div class="section" id="plain-text">
-<h3>1.4.3. Plain text<a class="headerlink" href="#plain-text" title="Permalink to this headline">¶</a></h3>
+<h3>Plain text<a class="headerlink" href="#plain-text" title="Permalink to this headline">¶</a></h3>
 <p>Scores are most easily displayed with this, especially if there is no ceiling which competitors are racing to achieve.  Debugging information, units talking, and anything else that would only be confusing if it was depicted in a graphical format. Never use plain text for something that occurs all over the screen and is important.  Health would appear awful as numbers.</p>
 </div>
 <div class="section" id="animations">
-<h3>1.4.4. Animations<a class="headerlink" href="#animations" title="Permalink to this headline">¶</a></h3>
+<h3>Animations<a class="headerlink" href="#animations" title="Permalink to this headline">¶</a></h3>
 <p>Animations should be used for a couple of reasons.  When you&#8217;re trying to depict the flow of information from one state to another or when you want to draw the competitors eyes to a certain portion of the screen.  If the state of an object is changing and it&#8217;s not cruicial information, it shouldn&#8217;t be animated.  If you have a game which goes from one game mode to another, then an animation should be used to let the user know that the game mode is changing.  The most obvious and pertinant usage of animation is, of course, objects moving from one position to another.</p>
 </div>
 <div class="section" id="color">
-<h3>1.4.5. Color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h3>
+<h3>Color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h3>
 <p>When you&#8217;re trying to differentiate between objects (like units between teams) color is especially effective.  If you&#8217;re trying to save screen real estate, you can use color as a depiction of flow from one state to another.  While not a way to accurately determine an object&#8217;s state, it can give a general feeling of its state.  A bright color could also appear if a competitor&#8217;s eyes should be drawn somewhere.</p>
 </div>
 <div class="section" id="particle-systems">
-<h3>1.4.6. Particle Systems<a class="headerlink" href="#particle-systems" title="Permalink to this headline">¶</a></h3>
+<h3>Particle Systems<a class="headerlink" href="#particle-systems" title="Permalink to this headline">¶</a></h3>
 <p>Can be used to show an important objects state.  An injured mothership might spark bright electricity which will let the competitor easily know that the ship is about to blow.  A subtle particle system can be used to show the interaction between two objects.</p>
 </div>
 </div>
 <div class="section" id="inspection-is-better-than-inspecting">
-<h2>1.5. Inspection is Better Than Inspecting<a class="headerlink" href="#inspection-is-better-than-inspecting" title="Permalink to this headline">¶</a></h2>
+<h2>Inspection is Better Than Inspecting<a class="headerlink" href="#inspection-is-better-than-inspecting" title="Permalink to this headline">¶</a></h2>
 <p>Visual inspection is priority.</p>
 <p>What this means is that if there is something important that a competitor can only see by a click or series of clicks, then you need to redesign.  If you have to sacrifice beauty to achieve this, then you should.  The visualizer is a tool, not an emotionally driven experience for the competitor.  All information that a competitor would want to see more than 60% of the time should be displayed in some way (perhaps even notifying them that something has changed, but no specifics, unless further inspection occurs).</p>
 </div>
@@ -194,20 +194,20 @@ deaths.</td>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1. Vizualizer Mantra</a><ul>
-<li><a class="reference internal" href="#purpose-of-the-visualizer">1.1. Purpose of the Visualizer</a></li>
-<li><a class="reference internal" href="#should-the-visualizer-be-attractive">1.2. Should the visualizer be attractive?</a></li>
-<li><a class="reference internal" href="#visualizing-everything">1.3. Visualizing Everything</a></li>
-<li><a class="reference internal" href="#how-to-convey-information">1.4. How To Convey Information</a><ul>
-<li><a class="reference internal" href="#a-texture">1.4.1. A texture</a></li>
-<li><a class="reference internal" href="#a-changing-bar">1.4.2. A changing bar</a></li>
-<li><a class="reference internal" href="#plain-text">1.4.3. Plain text</a></li>
-<li><a class="reference internal" href="#animations">1.4.4. Animations</a></li>
-<li><a class="reference internal" href="#color">1.4.5. Color</a></li>
-<li><a class="reference internal" href="#particle-systems">1.4.6. Particle Systems</a></li>
+<li><a class="reference internal" href="#">Vizualizer Mantra</a><ul>
+<li><a class="reference internal" href="#purpose-of-the-visualizer">Purpose of the Visualizer</a></li>
+<li><a class="reference internal" href="#should-the-visualizer-be-attractive">Should the visualizer be attractive?</a></li>
+<li><a class="reference internal" href="#visualizing-everything">Visualizing Everything</a></li>
+<li><a class="reference internal" href="#how-to-convey-information">How To Convey Information</a><ul>
+<li><a class="reference internal" href="#a-texture">A texture</a></li>
+<li><a class="reference internal" href="#a-changing-bar">A changing bar</a></li>
+<li><a class="reference internal" href="#plain-text">Plain text</a></li>
+<li><a class="reference internal" href="#animations">Animations</a></li>
+<li><a class="reference internal" href="#color">Color</a></li>
+<li><a class="reference internal" href="#particle-systems">Particle Systems</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inspection-is-better-than-inspecting">1.5. Inspection is Better Than Inspecting</a></li>
+<li><a class="reference internal" href="#inspection-is-better-than-inspecting">Inspection is Better Than Inspecting</a></li>
 </ul>
 </li>
 </ul>
