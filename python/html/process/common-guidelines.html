@@ -88,9 +88,26 @@
 <div class="section" id="docstrings">
 <h2>3.2. Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
 <p>Proper docstrings are required on all public methods (i.e. methods that do not start with a single underscore), and are suggested for usage with all private methods.  These docstrings generate the documentation used by sphinx and are easy-to-read when just reading code.  If someone ever has to look at the source to determine how to use a certain module, then the docstring is not clear enough.</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Write Example Docstrings Here</p>
+<p>Docstrings should try to follow the following format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Short one line description of FUNCTIONality (puns are encouraged)</span>
+
+<span class="sd">    More detailed description of this function.  For docstring maintainability reasons,</span>
+<span class="sd">    there is no 80 character limit imposed on these.  Instead your editor should, hopefully word-wrap these.</span>
+
+<span class="sd">    :param arg1: first number to be added with</span>
+<span class="sd">    :param arg2: second number to add</span>
+<span class="sd">    :type arg2: int</span>
+<span class="sd">    :param arg3: optional third number to add.</span>
+<span class="sd">    :type arg3: float</span>
+
+<span class="sd">    :raises: TypeError if NoneType passed in for arg3</span>
+
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c"># function</span>
+</pre></div>
 </div>
 </div>
 </div>
