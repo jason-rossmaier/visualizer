@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5. Supplementary OpenGL Information &mdash; Visualizer 0 documentation</title>
+    <title>5. Supplementary OpenGL Information &mdash; PyVis dev documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0',
+        VERSION:     'dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Visualizer 0 documentation" href="../index.html" />
+    <link rel="top" title="PyVis dev documentation" href="../index.html" />
     <link rel="prev" title="4. Pyglet, A Perhaps Useful Guide" href="../pyglet/index.html" /> 
   </head>
   <body>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="../pyglet/index.html" title="4. Pyglet, A Perhaps Useful Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Visualizer 0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">PyVis dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,11 +58,11 @@
 <p>OpenGL stands for OPEN Graphics Library.  But let&#8217;s be clear here.  OpenGL is neither open nor a graphics library in the general sense of either term. OpenGL is a tightly controlled standard set forth by The Khronos Group, which has people on its board from many major OS and graphics chipset providers. (e.g. Microsoft, Apple, NVidia, ATI, etc.)</p>
 <p>If you&#8217;re not familiar with the concept of standards, then I&#8217;ll explain here. A standard is a name brand associated with a specification.  To say that you are OpenGL compatible, or any other standard compatible, you must follow the strict set of specifications in the standard or potentially face legal implications. Typically there&#8217;s some sort of integration test that the standard maker performs then deems the source code compatible or not.</p>
 <p>So what OpenGL is, in a nutshell, is a set of rules that Graphics Card makers, software renderer developers, and the like must follow in their drivers to say that they run a certain version of OpenGL.</p>
-<p>The only open implementation of OpenGL that I know of is <cite>Mesa3D &lt;http://www.mesa3d.org&gt;</cite>.  It&#8217;s a software renderer used primarily by GNU/Linux.</p>
+<p>The only open implementation of OpenGL that I know of is <a class="reference external" href="http://www.mesa3d.org">Mesa3D</a>.  It&#8217;s a software renderer used primarily by GNU/Linux.</p>
 </div>
 <div class="section" id="retained-mode-vs-immediate-mode">
 <h2>5.2. Retained Mode vs Immediate Mode<a class="headerlink" href="#retained-mode-vs-immediate-mode" title="Permalink to this headline">¶</a></h2>
-<p>There are two high-level approaches to rendering stuff.  In retained mode, you send everything you want to draw to the graphics card once, then keep updating the stored information when you want to change something.  In immediate mode, you tell the graphics card exactly what to render every single frame.  Nothing is stored on the graphics card inbetween frames.  Retained mode is much faster, but can be more difficult to design a system around.  Pyglet thrives on retained mode as sending individual drawing calls ever frame is even slower when you&#8217;re reliant on the speed of python.</p>
+<p>There are two high-level approaches to rendering stuff: retained mode and immediate mode.  In retained mode, you send everything you want to draw to the graphics card once, then keep updating the stored information when you want to change something.  In immediate mode, you tell the graphics card exactly what to render every single frame.  Nothing is stored on the graphics card inbetween frames.  Retained mode is much faster, but can be more difficult to design a system around.  Pyglet thrives on retained mode as sending individual drawing calls ever frame is even slower when you&#8217;re reliant on the speed of python.</p>
 <p>Historically, OpenGL only supported immediate mode, using calls, glBegin() and glEnd().  Those calls are now deprecated and immediate mode is on its way out as The Khronos Group tries to streamline the API.</p>
 <p>Retained mode is managed using Display Lists (being deprecated) and Vertex Arrays through Vertex Buffer Objects.  Vertex arrays are lists of vertices that are stored in graphics memory along with colors, texture coordiates, fog coordinates, etc.  Then calling, glDrawArrays() or glMultiDrawArrays() tells OpenGL to use those verticies in memory to draw an object.  This becomes especially useful when you have a lot of reusable things in graphics memory.</p>
 </div>
@@ -120,11 +120,11 @@
         <li class="right" >
           <a href="../pyglet/index.html" title="4. Pyglet, A Perhaps Useful Guide"
              >previous</a> |</li>
-        <li><a href="../index.html">Visualizer 0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">PyVis dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, Jacob Gardner.
+        &copy; Copyright 2012, Missouri S&amp;T - ACM SIG-Game,Maintained by Jacob Gardner.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
