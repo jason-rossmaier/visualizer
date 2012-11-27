@@ -56,18 +56,89 @@
 to be drawn by pyglet.  This module also contains various base classes for
 primitives which can be modified on the fly.</p>
 <dl class="class">
-<dt id="renderer.Rectangle">
-<em class="property">class </em><tt class="descclassname">renderer.</tt><tt class="descname">Rectangle</tt><big>(</big><em>renderer</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>texture=None</em>, <em>group=None</em>, <em>color=None</em><big>)</big><a class="reference internal" href="_modules/renderer.html#Rectangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Rectangle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rectangle Documentation</p>
+<dt id="renderer.Primitive">
+<em class="property">class </em><tt class="descclassname">renderer.</tt><tt class="descname">Primitive</tt><big>(</big><em>renderer=None</em><big>)</big><a class="reference internal" href="_modules/renderer.html#Primitive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the base class for any primitive to draw to the screen. 
+To be used most effectively, all library-provided primitives should
+be declared within <a class="reference internal" href="#renderer.Renderer" title="renderer.Renderer"><tt class="xref py py-class docutils literal"><span class="pre">renderer.Renderer</span></tt></a></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="renderer.Renderer">
-<em class="property">class </em><tt class="descclassname">renderer.</tt><tt class="descname">Renderer</tt><big>(</big><em>renderer</em>, <em>application</em><big>)</big><a class="reference internal" href="_modules/renderer.html#Renderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Renderer" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="renderer.Renderer.build_rect">
-<tt class="descname">build_rect</tt><big>(</big><em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>group=None</em><big>)</big><a class="reference internal" href="_modules/renderer.html#Renderer.build_rect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Renderer.build_rect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><tt class="descclassname">renderer.</tt><tt class="descname">Renderer</tt><a class="reference internal" href="_modules/renderer.html#Renderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Renderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class allows access to the primitives (the basic drawing building 
+blocks) to draw just about anything.  Widgets should use these to 
+draw themselves:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Button</span><span class="p">(</span><span class="n">RectWidget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">btn_base</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+        <span class="n">btn_text</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="c"># etc. </span>
+        <span class="c"># etc.</span>
+</pre></div>
+</div>
+<p>primitives should be called through the Renderer instance instead of 
+through the class (i.e.):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderer</span> <span class="o">=</span> <span class="n">Renderer</span><span class="p">()</span>
+<span class="n">renderer</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderer</span> <span class="o">=</span> <span class="n">Renderer</span><span class="p">()</span>
+<span class="n">Renderer</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="n">renderer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is special python magic to make that work.  See <cite>__init__()</cite>
+for that.</p>
+<dl class="class">
+<dt id="renderer.Renderer.Rectangle">
+<em class="property">class </em><tt class="descname">Rectangle</tt><big>(</big><em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>texture=None</em>, <em>group=None</em>, <em>color=None</em>, <em>filled=True</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#renderer.Renderer.Rectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class creates a rectangle primitive.</p>
+<p><em>x</em> is the x offset (from the left side of the screen) to draw the
+rectangle.</p>
+<p><em>y</em> is the y offset (from the bottom of the screen) to draw the 
+rectangle.</p>
+<p><em>width</em> is the width of the rectangle</p>
+<p><em>height</em> is the height of the rectangle</p>
+<p>!NOT IMPLEMENTED!
+<em>texture</em> is the texture to paint the rectangle with</p>
+<p><em>group</em> is the group, if any, that the rectangle should
+be associated with.  Using texture will automatically make
+this a part of the appropriate TextureGroup and make <em>group</em>
+its parent.</p>
+<p><em>color</em> is the color to paint the rectangle.  If not specified,
+the renderer&#8217;s default <cite>fg_color</cite> will be used instead.</p>
+<p><em>filled</em> specified whether to draw this as a filled-in rectangle
+or rectangle outline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="renderer.Renderer.draw_frame">
+<tt class="descclassname">Renderer.</tt><tt class="descname">draw_frame</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/renderer.html#Renderer.draw_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Renderer.draw_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be called at (or near) the end of every game loop
+after all the objects have been updated and are ready to draw to 
+the screen.</p>
+<p>This will draw the batch associated with the renderer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="renderer.Renderer.init_frame">
+<tt class="descclassname">Renderer.</tt><tt class="descname">init_frame</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/renderer.html#Renderer.init_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#renderer.Renderer.init_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be called at the beginning of every game loop.  
+It does the pre-loop set up, if any.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="renderer.Renderer.register_with_app">
+<tt class="descclassname">Renderer.</tt><tt class="descname">register_with_app</tt><big>(</big><em>app</em><big>)</big><a class="headerlink" href="#renderer.Renderer.register_with_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method automagically sets up the requests from the application.  
+It is equivalent to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">app</span><span class="o">.</span><span class="n">request_update_on_draw</span><span class="p">(</span><span class="n">renderer</span><span class="o">.</span><span class="n">init_frame</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">request_update_on_draw</span><span class="p">(</span><span class="n">renderer</span><span class="o">.</span><span class="n">draw_frame</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </dd></dl>
 

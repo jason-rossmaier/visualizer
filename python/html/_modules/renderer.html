@@ -59,10 +59,10 @@
 <span class="kn">from</span> <span class="nn">pyglet</span> <span class="kn">import</span> <span class="n">clock</span>
 
 
-<span class="k">class</span> <span class="nc">Primitive</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Primitive"><a class="viewcode-back" href="../renderer.html#renderer.Primitive">[docs]</a><span class="k">class</span> <span class="nc">Primitive</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">vertex_lists</span> <span class="o">=</span> <span class="p">{}</span>
 
-
+</div>
 <div class="viewcode-block" id="Rectangle"><a class="viewcode-back" href="../renderer.html#renderer.Rectangle">[docs]</a><span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Primitive</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Rectangle Documentation</span>
@@ -115,13 +115,13 @@
         <span class="n">renderer</span><span class="o">.</span><span class="n">init_frame</span><span class="p">()</span>
         <span class="n">renderer</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">Batch</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">init_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Renderer.init_frame"><a class="viewcode-back" href="../renderer.html#renderer.Renderer.init_frame">[docs]</a>    <span class="k">def</span> <span class="nf">init_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
-
-    <span class="k">def</span> <span class="nf">draw_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="Renderer.draw_frame"><a class="viewcode-back" href="../renderer.html#renderer.Renderer.draw_frame">[docs]</a>    <span class="k">def</span> <span class="nf">draw_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fps_display</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-
+</div>
 <div class="viewcode-block" id="Renderer.build_rect"><a class="viewcode-back" href="../renderer.html#renderer.Renderer.build_rect">[docs]</a>    <span class="k">def</span> <span class="nf">build_rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        &#39;&#39;&#39;</span>
