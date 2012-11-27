@@ -18,7 +18,7 @@ $(document).ready(function() {
 	});*/
 
 	if (window.File && window.FileReader && window.FileList && window.Blob) {
-  		document.getElementById('visualizer-loader-files').addEventListener('change', handleFileSelect, false);
+  		document.getElementById('visualizer-loader-files').addEventListener('change', handleFiles, false);
 	} else {
 		Log('The File APIs are not fully supported in this browser.');
 	}
@@ -39,19 +39,30 @@ Loader.getGamelog = function(file, successCallback) {
 	});
 }
 
-function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
+function handleFiles(evt) {
+	var files = evt.target.files;
 
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-    }
-    document.getElementById('visualizer-loader-list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  }
+	for (i = 0; i < files.length; i++) {
+		var file = files[i];
+		var reader = new FileReader();
 
+		reader.onload = function(e) {
+			var str = e.target.result;
+
+			Gamelog = makeGamelogFromString(str);
+			gamelogLoaded();
+		}
+		reader.onerror = function(stuff) {
+			console.log("error", stuff)
+			console.log (stuff.getMessage())
+		}
+
+		reader.readAsText(file);
+	}
+}
+
+function makeGamelogFromString(str) {
+	return $.parseJSON(str);
+}
   
 

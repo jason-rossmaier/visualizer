@@ -2,12 +2,12 @@ var Plugins = new Array(); // plugins should add themselves to this through a di
 var plugin = null;
 
 $(document).ready(function() {
-	Loader.getGamelog("2.json", initializeSystems);
+	//Loader.getGamelog("2.json", initializeSystems);
 
 	// the 60 fps loop
 	(function (window) {
 		function gameLoop() {
-			if(plugin && Renderer.ready()) {
+			if(plugin && Renderer.ready() && Gamelog != null) {
 				Time.tick(1000 /60);  // todo: measure time elapsed
 				plugin.draw(Renderer, Time);
 			}
@@ -16,9 +16,7 @@ $(document).ready(function() {
 	} (window));
 });
 
-
-
-function initializeSystems() {
+function gamelogLoaded() {
 	// find the plugin
 	plugin = Plugins[Gamelog.gameName];
 
