@@ -5,6 +5,8 @@ $(document).ready(function() {
 		
 		this.drawnBackground = false;
 		this.name = "Galapagos";
+		this.renderableCreatures;
+		this.renderablePlants;
 
 		this.initialize = function(gamelog, renderer) {
 			// initialize stuff here, good ideas:
@@ -24,11 +26,59 @@ $(document).ready(function() {
 		this.textures = [
 			"plant",
 			"grass",
-			"dirt"
+			"dirt",
+			"pacman"
 		];
 
 		this.parse = function(gamelog) {
 			// here you will want to iterate through the gamelog and build data structures by parsing the gamelog
+			// initialize the renderables for creatures with the template of the first creature we find
+			this.renderableCreatures = new Renderables(gamelog.turns[0].Creatures[0]);
+			this.renderablePlants = new Renderables(gamelog.turns[0].Plants[0]);
+
+			// for each turn in the gamelog
+			for(var i in gamelog.turns) {
+				var turn = gamelog.turns[i];
+
+				// for each creature in the current turn
+				for(var j in turn.Creatures) {
+					var creature = turn.Creatures[j];
+
+					var sawMoveAnimation = false;
+					for(var a in turn.animations) {
+						var animation = turn.animations[a];
+
+						if(animation.type == "move" && animation.actingID == creature.id) {
+							if( !sawMoveAnimation ) {
+								this.renderableCreatures.addTurn(creature.id, turn.turnNumber, {
+									x: animation.fromX,
+									y: animation.fromY
+								});
+							}
+
+							this.renderableCreatures.addTurn(creature.id, turn.turnNumber, {
+								x: animation.toX,
+								y: animation.toY
+							});
+
+							sawMoveAnimation = true;
+						}
+					}
+
+					if(sawMoveAnimation) {
+						delete creature.x;
+						delete creature.y;
+					}
+					this.renderableCreatures.addTurn(creature.id, turn.turnNumber, creature);
+				}
+
+				// for each plant in the turn
+				for(var p in turn.Plants) {
+					var plant = turn.Plants[p];
+
+					this.renderablePlants.addTurn(plant.id, turn.turnNumber, plant);
+				}
+			}
 		}
 
 		this.draw = function(renderer, time) {
@@ -45,10 +95,22 @@ $(document).ready(function() {
 				this.drawnBackground = true;
 			}
 
-			// draw fake plants
+			// draw creatures based on the renderablesCreatures
 			renderer.clearLayer("units");
-			for(var i = 0; i < renderer.height; i++) {
-				renderer.drawTexture("plant", "units", i + (time.turn+time.t)%renderer.height, i, 1, 1);
+			
+			var creatures = this.renderableCreatures.at(time.turn, time.t);
+			for(var i in creatures) {
+				var creature = creatures[i];
+
+				renderer.drawQuad("units", creature.x, creature.y, 1, 1, creature.owner == 0 ? 255: 32, 32, creature.owner == 0 ? 32 : 255, 255);
+				renderer.drawTexture("pacman", "units", creature.x, creature.y, 1, 1);
+			}
+
+			var plants = this.renderablePlants.at(time.turn, time.t);
+			for(var p in plants) {
+				var plant = plants[p];
+
+				renderer.drawTexture("plant", "units", plant.x, plant.y, 1, 1);
 			}
 		}
 
