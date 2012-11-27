@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. Pyglet, A Perhaps Useful Guide &mdash; Visualizer 0 documentation</title>
+    <title>2. Guidelines for Code-Review &mdash; Visualizer 0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Visualizer 0 documentation" href="../index.html" />
-    <link rel="next" title="5. Supplementary OpenGL Information" href="../opengl/index.html" />
-    <link rel="prev" title="3. Official Resource For Writing Proper Visualizer Code" href="../process/common-issues.html" /> 
+    <link rel="next" title="3. Pyglet, A Perhaps Useful Guide" href="../pyglet/index.html" />
+    <link rel="prev" title="1. Visualizer Development Process" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,10 +40,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../opengl/index.html" title="5. Supplementary OpenGL Information"
+          <a href="../pyglet/index.html" title="3. Pyglet, A Perhaps Useful Guide"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../process/common-issues.html" title="3. Official Resource For Writing Proper Visualizer Code"
+          <a href="index.html" title="1. Visualizer Development Process"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Visualizer 0 documentation</a> &raquo;</li> 
       </ul>
@@ -54,22 +54,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="pyglet-a-perhaps-useful-guide">
-<h1>4. Pyglet, A Perhaps Useful Guide<a class="headerlink" href="#pyglet-a-perhaps-useful-guide" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="other-pages">
-<h2>4.1. Other Pages<a class="headerlink" href="#other-pages" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="pyglet-drawing.html"><em>The Pyglet Drawing Hierarchy</em></a></li>
-</ul>
-</div></blockquote>
-<p>Pyglet is a pure-python library that accesses the native OpenGL calls on your OS.  It actually does a lot of other cool stuff.  But from a graphics perspective, this is important.  Using a tool called gengl.py, it automatically generates all the python hooks to access everything you could want to access in OpenGL including extensions and other stuff.  It also does all the set up for you.</p>
-<p>If you take a look at <a class="reference internal" href="pyglet-drawing.html"><em>Pyglet Drawing</em></a>, it will show you how pyglet organizes things so as to provide very efficient and fast rendering.</p>
-<p>The main thing to take away from that is that pyglet is very fast when it keeps rendering the same things.  If you create an environment where pyglet has to keep adding new things, then it will be very slow.  This includes clearing and re-adding already existing items.</p>
-<p>The most efficient way to use pyglet is to essentially create diffs between frames.  If nothing has changed for an element, then the diff is nothing.</p>
-<p>A paused game should be hyper fast because the diff should be empty.</p>
-<p>When making something hidden, it is faster to set its alpha to zero or set all the vertices in the object to (0, 0).</p>
-</div>
+  <div class="section" id="guidelines-for-code-review">
+<h1>2. Guidelines for Code-Review<a class="headerlink" href="#guidelines-for-code-review" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -78,23 +64,15 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">4. Pyglet, A Perhaps Useful Guide</a><ul>
-<li><a class="reference internal" href="#other-pages">4.1. Other Pages</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../process/common-issues.html"
-                        title="previous chapter">3. Official Resource For Writing Proper Visualizer Code</a></p>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">1. Visualizer Development Process</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../opengl/index.html"
-                        title="next chapter">5. Supplementary OpenGL Information</a></p>
+  <p class="topless"><a href="../pyglet/index.html"
+                        title="next chapter">3. Pyglet, A Perhaps Useful Guide</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/pyglet/index.txt"
+    <li><a href="../_sources/process/review-guidelines.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -124,10 +102,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../opengl/index.html" title="5. Supplementary OpenGL Information"
+          <a href="../pyglet/index.html" title="3. Pyglet, A Perhaps Useful Guide"
              >next</a> |</li>
         <li class="right" >
-          <a href="../process/common-issues.html" title="3. Official Resource For Writing Proper Visualizer Code"
+          <a href="index.html" title="1. Visualizer Development Process"
              >previous</a> |</li>
         <li><a href="../index.html">Visualizer 0 documentation</a> &raquo;</li> 
       </ul>
