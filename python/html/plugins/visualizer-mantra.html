@@ -59,7 +59,7 @@
 <p>This work shall act as a set of guidelines for plugin design decisions.  It shall also give guidance in the visualizer core on what should be improved such that plugins may more easily achieve the goals set forth by this document.</p>
 <div class="section" id="purpose-of-the-visualizer">
 <h2>Purpose of the Visualizer<a class="headerlink" href="#purpose-of-the-visualizer" title="Permalink to this headline">¶</a></h2>
-<p>There are several purposes that could be said that the visualizer holds, but above all the purpose of the visualizer is to convey as much artificial intelligence information in the most accurate, succint way possible.  Only when this goal is met, should other features and fluff be worked on.</p>
+<p>There are several purposes that could be said that the visualizer holds, but above all the purpose of the visualizer is to convey as much artificial intelligence information in the most accurate, succinct way possible.  Only when this goal is met, should other features and fluff be worked on.</p>
 <p>Other purposes of the visualizer include (but are not limited to):</p>
 <blockquote>
 <div><ul class="simple">
@@ -144,40 +144,20 @@ deaths.</td>
 <div class="section" id="how-to-convey-information">
 <h2>How To Convey Information<a class="headerlink" href="#how-to-convey-information" title="Permalink to this headline">¶</a></h2>
 <p>There&#8217;s a lot of ways we can show information.  You&#8217;ll have to rely on creativity for a lot of this, but some of the common ways are:</p>
-<blockquote>
-<div><ul class="simple">
-<li>a texture</li>
-<li>a changing bar</li>
-<li>plain text</li>
-<li>animations</li>
-<li>color</li>
-<li>particle systems</li>
-</ul>
-</div></blockquote>
-<div class="section" id="a-texture">
-<h3>A texture<a class="headerlink" href="#a-texture" title="Permalink to this headline">¶</a></h3>
-<p>For example if there&#8217;s 4 unit types, you might have 4 textures to differentiate between them easily.</p>
-</div>
-<div class="section" id="a-changing-bar">
-<h3>A changing bar<a class="headerlink" href="#a-changing-bar" title="Permalink to this headline">¶</a></h3>
-<p>The most common example of this is health.  If a unit&#8217;s health is depleting, the bar decreases in size.  But that&#8217;s not the only way.  If there&#8217;s only one unit type in the game, and such granularity is not needed for health, you could have 4 textures which depict different states of disrepair for the unit.  With that, you&#8217;ve effectively saved some real-estate on a unit that can be used for something else.  You could also depict a falling timer or perhaps a score ceiling with two racing bars.</p>
-</div>
-<div class="section" id="plain-text">
-<h3>Plain text<a class="headerlink" href="#plain-text" title="Permalink to this headline">¶</a></h3>
-<p>Scores are most easily displayed with this, especially if there is no ceiling which competitors are racing to achieve.  Debugging information, units talking, and anything else that would only be confusing if it was depicted in a graphical format. Never use plain text for something that occurs all over the screen and is important.  Health would appear awful as numbers.</p>
-</div>
-<div class="section" id="animations">
-<h3>Animations<a class="headerlink" href="#animations" title="Permalink to this headline">¶</a></h3>
-<p>Animations should be used for a couple of reasons.  When you&#8217;re trying to depict the flow of information from one state to another or when you want to draw the competitors eyes to a certain portion of the screen.  If the state of an object is changing and it&#8217;s not cruicial information, it shouldn&#8217;t be animated.  If you have a game which goes from one game mode to another, then an animation should be used to let the user know that the game mode is changing.  The most obvious and pertinant usage of animation is, of course, objects moving from one position to another.</p>
-</div>
-<div class="section" id="color">
-<h3>Color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h3>
-<p>When you&#8217;re trying to differentiate between objects (like units between teams) color is especially effective.  If you&#8217;re trying to save screen real estate, you can use color as a depiction of flow from one state to another.  While not a way to accurately determine an object&#8217;s state, it can give a general feeling of its state.  A bright color could also appear if a competitor&#8217;s eyes should be drawn somewhere.</p>
-</div>
-<div class="section" id="particle-systems">
-<h3>Particle Systems<a class="headerlink" href="#particle-systems" title="Permalink to this headline">¶</a></h3>
-<p>Can be used to show an important objects state.  An injured mothership might spark bright electricity which will let the competitor easily know that the ship is about to blow.  A subtle particle system can be used to show the interaction between two objects.</p>
-</div>
+<dl class="glossary docutils">
+<dt id="term-a-texture">A texture</dt>
+<dd>For example if there&#8217;s 4 unit types, you might have 4 textures to differentiate between them easily.</dd>
+<dt id="term-a-changing-bar">A changing bar</dt>
+<dd>The most common example of this is health.  If a unit&#8217;s health is depleting, the bar decreases in size.  But that&#8217;s not the only way.  If there&#8217;s only one unit type in the game, and such granularity is not needed for health, you could have 4 textures which depict different states of disrepair for the unit.  With that, you&#8217;ve effectively saved some real-estate on a unit that can be used for something else.  You could also depict a falling timer or perhaps a score ceiling with two racing bars.</dd>
+<dt id="term-plain-text">Plain text</dt>
+<dd>Scores are most easily displayed with this, especially if there is no ceiling which competitors are racing to achieve.  Debugging information, units talking, and anything else that would only be confusing if it was depicted in a graphical format. Never use plain text for something that occurs all over the screen and is important.  Health would appear awful as numbers.</dd>
+<dt id="term-animations">Animations</dt>
+<dd>Animations should be used for a couple of reasons.  When you&#8217;re trying to depict the flow of information from one state to another or when you want to draw the competitors eyes to a certain portion of the screen.  If the state of an object is changing and it&#8217;s not crucial information, it shouldn&#8217;t be animated.  If you have a game which goes from one game mode to another, then an animation should be used to let the user know that the game mode is changing.  The most obvious and pertinent usage of animation is, of course, objects moving from one position to another.</dd>
+<dt id="term-color">Color</dt>
+<dd>When you&#8217;re trying to differentiate between objects (like units between teams) color is especially effective.  If you&#8217;re trying to save screen real estate, you can use color as a depiction of flow from one state to another.  While not a way to accurately determine an object&#8217;s state, it can give a general feeling of its state.  A bright color could also appear if a competitor&#8217;s eyes should be drawn somewhere.</dd>
+<dt id="term-particle-systems">Particle Systems</dt>
+<dd>Can be used to show an important objects state.  An injured mothership might spark bright electricity which will let the competitor easily know that the ship is about to blow.  A subtle particle system can be used to show the interaction between two objects.</dd>
+</dl>
 </div>
 <div class="section" id="inspection-is-better-than-inspecting">
 <h2>Inspection is Better Than Inspecting<a class="headerlink" href="#inspection-is-better-than-inspecting" title="Permalink to this headline">¶</a></h2>
@@ -198,15 +178,7 @@ deaths.</td>
 <li><a class="reference internal" href="#purpose-of-the-visualizer">Purpose of the Visualizer</a></li>
 <li><a class="reference internal" href="#should-the-visualizer-be-attractive">Should the visualizer be attractive?</a></li>
 <li><a class="reference internal" href="#visualizing-everything">Visualizing Everything</a></li>
-<li><a class="reference internal" href="#how-to-convey-information">How To Convey Information</a><ul>
-<li><a class="reference internal" href="#a-texture">A texture</a></li>
-<li><a class="reference internal" href="#a-changing-bar">A changing bar</a></li>
-<li><a class="reference internal" href="#plain-text">Plain text</a></li>
-<li><a class="reference internal" href="#animations">Animations</a></li>
-<li><a class="reference internal" href="#color">Color</a></li>
-<li><a class="reference internal" href="#particle-systems">Particle Systems</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#how-to-convey-information">How To Convey Information</a></li>
 <li><a class="reference internal" href="#inspection-is-better-than-inspecting">Inspection is Better Than Inspecting</a></li>
 </ul>
 </li>
