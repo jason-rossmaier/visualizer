@@ -58,7 +58,7 @@
 <h1>Official Resource For Writing Proper Visualizer Code<a class="headerlink" href="#official-resource-for-writing-proper-visualizer-code" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="importing-modules">
 <h2>Importing Modules<a class="headerlink" href="#importing-modules" title="Permalink to this headline">¶</a></h2>
-<p>Module imports should all appear at the very top of the file unless there is a good reason not to (e.g. a user selects if he wants OpenGL or DirectX rendering).</p>
+<p>Module imports should all appear at the very top of the file unless there is a good reason not to (e.g. a user selects if he wants OpenGL or DirectX rendering (!!NOT A SUPPORTED FEATURE!!) ).</p>
 <p><tt class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></tt> is never acceptable.  This can cause name conflicts, and makes it more difficult to determine the origin of objects.  For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">application</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">renderer</span> <span class="kn">import</span> <span class="o">*</span>
@@ -205,6 +205,28 @@ single space, with blank lines in between, but conventions vary here
 <p>Taken from <a class="reference external" href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></p>
 <p>See that post for reasons.</p>
 </div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Raising exceptions should occur in Python 3.x fashion:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">raise</span> <span class="n">CustomException</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">raise</span> <span class="n">CustomException</span><span class="p">,</span> <span class="s">&#39;data&#39;</span>
+</pre></div>
+</div>
+<p>This is for stylistic reasons and to become accustomed with the python 3.x format.  Exceptions are classes and should be treated as such.</p>
+</div>
+<div class="section" id="print-statements">
+<h2>Print Statements<a class="headerlink" href="#print-statements" title="Permalink to this headline">¶</a></h2>
+<p>The print function is preferred over the print statement.  Since the future of python is 3.x, we should start to accustom ourselves with the new format for when we make the switch.</p>
+<p>To use the print function, this must appear at the top of the source file before any other import:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+</pre></div>
+</div>
+<p>Likewise, any language feature which is available in 2.7, but not required until 3.x should use the 3.x format.</p>
+<p>You can see these language features by looking for the back-porting notes in this document: <a class="reference external" href="http://docs.pythonsprints.com/python3_porting/py-porting.html">http://docs.pythonsprints.com/python3_porting/py-porting.html</a></p>
+</div>
 </div>
 
 
@@ -221,6 +243,8 @@ single space, with blank lines in between, but conventions vary here
 <li><a class="reference internal" href="#variable-module-organization">Variable/Module Organization</a></li>
 <li><a class="reference internal" href="#list-comprehensions-vs-loops">List Comprehensions vs Loops</a></li>
 <li><a class="reference internal" href="#commit-messages">Commit Messages</a></li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#print-statements">Print Statements</a></li>
 </ul>
 </li>
 </ul>
