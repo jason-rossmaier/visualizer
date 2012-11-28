@@ -93,8 +93,10 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Short one line description of FUNCTIONality (puns are encouraged)</span>
 
-<span class="sd">    More detailed description of this function.  For docstring maintainability reasons,</span>
-<span class="sd">    there is no 80 character limit imposed on these.  Instead your editor should, hopefully word-wrap these.</span>
+<span class="sd">    More detailed description of this function.</span>
+<span class="sd">    For docstring maintainability reasons, there is no 80 character limit imposed on these, but logical breaks are encouraged for readability.</span>
+<span class="sd">    Trying to edit an existing paragraph that wraps at 80 characters, no matter what causes time lost in trying to re-organize everything.</span>
+<span class="sd">    Your editor should, hopefully word-wrap these.</span>
 
 <span class="sd">    :param arg1: first number to be added with</span>
 <span class="sd">    :param arg2: second number to add</span>
@@ -110,6 +112,71 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="variable-module-organization">
+<h2>Variable/Module Organization<a class="headerlink" href="#variable-module-organization" title="Permalink to this headline">¶</a></h2>
+<p>Whenever groups of variables are present, their ordering should follow the following rule:</p>
+<div class="highlight-python"><pre>Variables should be alphabetized when there is no prevailing convention for their order.
+Otherwise, the existing conventions should be kept.
+Alphabetize when possible.</pre>
+</div>
+<p>The most common example of this is width and height.  While width follows height, alphabetically, the prevailing convention is that we state width before height (probably because they&#8217;re analogues to x and y coordinates).
+So this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">BORDER_COLOR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">BORDER_DASHED</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">ENTRY_ONE</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
+<span class="n">ENTRY_TWO</span> <span class="o">=</span> <span class="s">&#39;2&#39;</span>
+<span class="n">ENTRY_THREE</span> <span class="o">=</span> <span class="s">&#39;3&#39;</span>
+<span class="n">ENTRY_FOUR</span> <span class="o">=</span> <span class="s">&#39;4&#39;</span>
+<span class="n">ENTRY_FIVE</span> <span class="o">=</span> <span class="s">&#39;5&#39;</span>
+
+<span class="n">WINDOW_X</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">WINDOW_Y</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">WINDOW_WIDTH</span> <span class="o">=</span> <span class="mi">640</span>
+<span class="n">WINDOW_HEIGHT</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="n">XYLOPHONE_SOUND</span> <span class="o">=</span> <span class="s">&#39;funny&#39;</span>
+</pre></div>
+</div>
+<p>is preferred to this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">BORDER_COLOR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">BORDER_DASHED</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">ENTRY_FOUR</span> <span class="o">=</span> <span class="s">&#39;4&#39;</span>
+<span class="n">ENTRY_FIVE</span> <span class="o">=</span> <span class="s">&#39;5&#39;</span>
+<span class="n">ENTRY_ONE</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
+<span class="n">ENTRY_THREE</span> <span class="o">=</span> <span class="s">&#39;3&#39;</span>
+<span class="n">ENTRY_TWO</span> <span class="o">=</span> <span class="s">&#39;2&#39;</span>
+
+<span class="n">WINDOW_HEIGHT</span> <span class="o">=</span> <span class="mi">480</span>
+<span class="n">WINDOW_WIDTH</span> <span class="o">=</span> <span class="mi">640</span>
+<span class="n">WINDOW_X</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">WINDOW_Y</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">XYLOPHONE_SOUND</span> <span class="o">=</span> <span class="s">&#39;funny&#39;</span>
+</pre></div>
+</div>
+<p>Likewise, modules should almost always be alphabetized, unless there is a strict ordering needed (hopefully we didn&#8217;t write that library).</p>
+<p><a class="reference external" href="http://css-tricks.com/poll-results-how-do-you-order-your-css-properties/">Online Poll Of This Issue</a></p>
+</div>
+<div class="section" id="list-comprehensions-vs-loops">
+<h2>List Comprehensions vs Loops<a class="headerlink" href="#list-comprehensions-vs-loops" title="Permalink to this headline">¶</a></h2>
+<p>Some of you may be tempted to use a list comprehension to perform the task of a loop because... well, I don&#8217;t know why.  I&#8217;ve just seen this places and it confuses me.  I&#8217;m talking about this:</p>
+<div class="highlight-python"><pre>class Object(object):
+    # code
+    def print(self):
+        print(self.value)
+
+list_of_objects = [Object(blah), Object(blerg), Object(foo), Object(bar), Object(spam), ... ]
+
+[i.print() for i in list_of_objects]</pre>
+</div>
+<p>instead of:</p>
+<div class="highlight-python"><pre>for i in list_of_objects:
+    i.print()</pre>
+</div>
+<p>Functionally, they complete the same task, but there&#8217;s reasons not to do the first one.  First of all, it&#8217;s bad python.  Plain and simple you&#8217;re over-complicating things.  You&#8217;re using a list comprehension to do something it wasn&#8217;t born to do.  List comprehensions are for building lists and they do it pretty quickly.  They are not, however, very good at iterating though items and running code.  That&#8217;s because when you run a for loop, there&#8217;s no implied list being built.  I see zero advantages for doing it this way, so don&#8217;t.  List comprehensions should be used for building lists that are to be used and nothing else.  Use your tab key and build a loop instead.</p>
+</div>
 </div>
 
 
@@ -123,6 +190,8 @@
 <li><a class="reference internal" href="#">Official Resource For Writing Proper Visualizer Code</a><ul>
 <li><a class="reference internal" href="#importing-modules">Importing Modules</a></li>
 <li><a class="reference internal" href="#docstrings">Docstrings</a></li>
+<li><a class="reference internal" href="#variable-module-organization">Variable/Module Organization</a></li>
+<li><a class="reference internal" href="#list-comprehensions-vs-loops">List Comprehensions vs Loops</a></li>
 </ul>
 </li>
 </ul>
