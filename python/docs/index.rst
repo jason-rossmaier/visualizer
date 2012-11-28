@@ -3,15 +3,51 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Visualizer's documentation!
-======================================
+PyVis Documentation
+===================
 
-Contents:
+This is not yet organized how it should be.
+
+Plugin Stuff
+------------
 
 .. toctree::
-   :maxdepth: 2
+    :titlesonly:
+
+    plugins/visualizer-mantra.rst
+
+Core Stuff
+----------
+
+.. toctree::
+    :maxdepth: 2
+    :numbered:
+
+    code/application.rst
+    code/renderer.rst
+    code/input.rst
+
+Design Stuff
+------------
+
+.. toctree::
+    :titlesonly:
+
+    design/component_description.rst
+    design/widgets.rst
 
 
+Supplementary Information
+-------------------------
+
+.. toctree::
+    :titlesonly:
+
+    process/index.rst
+    process/review-guidelines.rst
+    process/common-guidelines.rst
+    pyglet/index.rst
+    opengl/index.rst
 
 Indices and tables
 ==================
