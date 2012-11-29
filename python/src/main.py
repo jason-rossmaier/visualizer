@@ -1,5 +1,6 @@
 from application import Application
 from renderer import Renderer
+import ui
 
 # Prohibit from main import *
 __all__ = []
@@ -43,13 +44,10 @@ def main():
     app = Application()
     renderer = Renderer()
     renderer.register_with_app(app)
-    app.request_update_on_draw(Test(renderer).update)
+    #app.request_update_on_draw(Test(renderer).update)
 
-    r = Renderer.Rectangle(1, 2, 20, 30, renderer=renderer)
-    try:
-        r = Renderer.Rectangle(40, 40, 20, 30)
-    except:
-        pass
+    mainWindow = ui.Window(renderer, 50, 50, 300, 400)
+    mainWindow.addWidget(ui.Button, x=20, y=20, width=50, height=60, color=(1, 0, 1, 1), text="Example Text")
 
     app.run()
 
